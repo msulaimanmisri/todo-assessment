@@ -28,7 +28,7 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($todos as $todo)
+                    @forelse ($todos as $todo)
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>{{ ucfirst($todo->title) }}</td>
@@ -40,7 +40,13 @@
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td class="text-center text-muted py-5" colspan="12">
+                                No data. Please insert your Todo
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

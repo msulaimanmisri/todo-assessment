@@ -5,15 +5,4 @@
     integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
 </script>
 
-{{-- Remove the Cookie using JS --}}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.cookie = 'todo=' + JSON.stringify({{ $todo }}) + '; path=/;';
-    });
-
-    window.addEventListener('unload', function() {
-        document.cookie = 'todo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    });
-</script>
-
 @stack('child-script')
