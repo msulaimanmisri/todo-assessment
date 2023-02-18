@@ -4,8 +4,25 @@
     <div class="container my-5">
         <div class="heroSection">
             <h1 class="display-3">Todo Application</h1>
-            <a href="{{ route('todo.create') }}" class="btn btn-primary btn-sm mt-3">Add New Todo</a>
+            <button class="btn btn-primary btn-sm mt-3" id="hide-show-form">Add New Todo</button>
         </div>
+
+        <div class="todoShow mt-3">
+            <div class="card p-4 shadow-sm border-0">
+                @include('main.todo.create')
+            </div>
+        </div>
+
+        @push('child-script')
+            <script>
+                $(document).ready(function() {
+                    $('.todoShow').hide();
+                    $('#hide-show-form').click(function() {
+                        $('.todoShow').toggle();
+                    });
+                });
+            </script>
+        @endpush
 
         <div class="todoAlert mt-3">
             @if (Session::has('success'))
