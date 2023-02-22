@@ -7,3 +7,9 @@
 2. You can access this application and test the functionalities by clicking this url [Todo Application](https://todo.sulaimanmisri.com).
 
 3. Every data in the website will be deleted automatically each 3 hour. I'm using Supervisor and `php artisan schedule:work` command to do that.
+
+### Versioning
+| Version      | Description |
+| ----------- | ----------- |
+|1.x    |   1. Adding Delete Task Function   |
+|       |   2. Adding Complete Task Function   |
