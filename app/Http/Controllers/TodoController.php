@@ -46,4 +46,11 @@ class TodoController extends Controller
 
         return to_route('todo.index')->with('success', 'Data has been updated!');
     }
+
+    public function destroy(Todo $todo)
+    {
+        $title = $todo->title;
+        $todo->delete();
+        return to_route('todo.index')->with('successDelete', "Task " . ucwords($title) . " has successfully deleted! ");
+    }
 }
