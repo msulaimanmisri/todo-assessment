@@ -11,7 +11,20 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 {{-- Clear session using JS --}}
-<script src="{{ asset('assets/js/remove-session.js') }}"></script>
+<script>
+    $(window).on('beforeunload', function() {
+        $.ajax({
+            url: '/delete-session',
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+</script>
 
 
 @stack('child-script')
