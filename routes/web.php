@@ -10,4 +10,4 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', [TodoController::class, 'index'])->name('todo.index');
-Route::resource('/todo', TodoController::class)->except('index', 'destroy');
+Route::resource('/todo', TodoController::class)->except('index');

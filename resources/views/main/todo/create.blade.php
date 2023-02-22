@@ -22,3 +22,14 @@
         <button class="btn btn-outline-primary btn-sm" type="submit">Create Task</button>
     </div>
 </form>
+
+@push('child-script')
+    <script>
+        $(document).ready(function() {
+            $('.todoShow').hide();
+            $('#hide-show-form').click(function() {
+                $('.todoShow').toggle();
+            });
+        });
+    </script>
+@endpush
