@@ -2,6 +2,5 @@
     onsubmit="return confirm('Are you sure you want to delete the record?');">
     @csrf
     @method('DELETE')
+    <button class="btn btn-outline-danger btn-sm" type="submit">Delete Task</button>
 </form>
-
-<button class="btn btn-outline-danger btn-sm" type="submit" form="deleteTodoForm">Delete Task</button>

@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Todo;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Todo\StoreTodoRequest;
 use App\Http\Requests\Todo\UpdateTodoRequest;
-use App\Models\Todo;
 
 class TodoController extends Controller
 {
     public function index()
     {
         $todos = Todo::query()->orderBy('created_at', 'desc')->where('is_complete', false)->get();
-        return view('main.todo.index', compact('todos'));
+        $todoData = session('todoData', []);
+        return view('main.todo.index', compact('todos', 'todoData'));
     }
 
     public function create()
@@ -23,10 +25,23 @@ class TodoController extends Controller
     {
         $request->validated();
 
+        /**
+         * First, Save the request in DB
+         */
         $todo = Todo::create([
             'title' => $request->title,
             'description' => $request->description,
         ]);
+
+        /**
+         * Second, Save the request in Session
+         */
+        $todoData = session('todoData', []);
+        $todoData[] = [
+            'title' => $request->title,
+            'description' => $request->description,
+        ];
+        session()->put('todoData', $todoData);
 
         return to_route('todo.index')->with('success', 'Data has been inserted!');
     }
