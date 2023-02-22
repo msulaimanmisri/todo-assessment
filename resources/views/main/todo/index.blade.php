@@ -31,24 +31,35 @@
                 </thead>
 
                 <tbody>
-                    @forelse ($todos as $todo)
-                        <tr>
-                            <td class="text-center">{{ $loop->iteration }}</td>
-                            <td>{{ ucfirst($todo->title) }}</td>
-                            <td>{{ $todo->description == true ? $todo->description : '-' }}</td>
-                            <td class="d-flex gap-1 justify-content-center">
-                                @include('components.edit-button')
-                                @include('components.complete-button')
-                                @include('components.delete-button')
-                            </td>
-                        </tr>
-                    @empty
+                    @php
+                        $todoData = session('todoData'); // Retrieve the todoData from session
+                    @endphp
+                    @if ($todoData)
+                        @forelse ($todos as $todo)
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td>{{ ucfirst($todo['title']) }}</td>
+                                <td>{{ $todo['description'] == true ? $todo['description'] : '-' }}</td>
+                                <td class="d-flex gap-1 justify-content-center">
+                                    @include('components.edit-button')
+                                    @include('components.complete-button')
+                                    @include('components.delete-button')
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td class="text-center text-muted py-5" colspan="12">
+                                    No data. Please insert your Task
+                                </td>
+                            </tr>
+                        @endforelse
+                    @else
                         <tr>
                             <td class="text-center text-muted py-5" colspan="12">
                                 No data. Please insert your Task
                             </td>
                         </tr>
-                    @endforelse
+                    @endif
                 </tbody>
             </table>
         </div>

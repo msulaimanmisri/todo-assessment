@@ -11,5 +11,6 @@
 ### Versioning
 | Version      | Description |
 | ----------- | ----------- |
-|1.x    |   1. Adding Delete Task Function   |
+|   1.x    |   1. Adding Delete Task Function   |
 |       |   2. Adding Complete Task Function   |
+|   2.x    |   1. Adding Session Function   |
