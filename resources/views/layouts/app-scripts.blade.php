@@ -12,16 +12,19 @@
 
 {{-- Clear session using JS --}}
 <script>
-    $(window).on('beforeunload', function() {
-        $.ajax({
-            url: '/delete-session',
-            type: 'POST',
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
+    window.addEventListener('beforeunload', function() {
+        // Delete all data
+        $.get('{{ route('session.delete.data') }}').done(function(response) {
+            console.log(response.message);
+        }).fail(function(error) {
+            console.log(error);
+        });
+
+        // Remove Session
+        $.post('{{ route('session.delete') }}').done(function(response) {
+            console.log(response.message);
+        }).fail(function(error) {
+            console.log(error);
         });
     });
 </script>

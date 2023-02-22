@@ -31,9 +31,6 @@
                 </thead>
 
                 <tbody>
-                    @php
-                        $todoData = session('todoData'); // Retrieve the todoData from session
-                    @endphp
                     @if ($todoData)
                         @forelse ($todos as $todo)
                             <tr>
