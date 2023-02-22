@@ -2,6 +2,6 @@
     onsubmit="return confirm('Are you sure you want to complete the task?');">
     @csrf
     @method('PATCH')
-</form>
 
-<button class="btn btn-outline-success btn-sm" type="submit" form="completeTheTaskForm">Complete</button>
+    <button class="btn btn-outline-success btn-sm" type="submit">Complete</button>
+</form>
