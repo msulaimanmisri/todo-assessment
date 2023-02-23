@@ -12,8 +12,7 @@ class TodoController extends Controller
     public function index()
     {
         $todos = Todo::query()->orderBy('created_at', 'desc')->where('is_complete', false)->get();
-        $todoData = session('todoData', []);
-        return view('main.todo.index', compact('todos', 'todoData'));
+        return view('main.todo.index', compact('todos'));
     }
 
     public function create()
@@ -36,12 +35,12 @@ class TodoController extends Controller
         /**
          * Second, Save the request in Session
          */
-        $todoData = session('todoData', []);
-        $todoData[] = [
-            'title' => $request->title,
-            'description' => $request->description,
-        ];
-        session()->put('todoData', $todoData);
+        // $todoData = session('todoData', []);
+        // $todoData[] = [
+        //     'title' => $request->title,
+        //     'description' => $request->description,
+        // ];
+        // session()->put('todoData', $todoData);
 
         return to_route('todo.index')->with('success', 'Data has been inserted!');
     }
