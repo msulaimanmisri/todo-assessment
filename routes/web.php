@@ -17,5 +17,5 @@ Route::resource('/todo', TodoController::class)->except('index');
 Route::PATCH('/todo/{todo}/complete', [CompletedTaskController::class, 'completeTheTask'])->name('todo.complete.update');
 Route::get('/completed', [CompletedTaskController::class, 'showAllTaskThatCompleted'])->name('todo.complete.index');
 
-Route::post('/delete-session', [RemoveSessionController::class, 'deleteSessionData'])->name('session.delete');
-Route::get('/delete-data', [RemoveSessionController::class, 'deleteData'])->name('session.delete.data');
+// Route::post('/delete-session', [RemoveSessionController::class, 'deleteSessionData'])->name('session.delete');
+// Route::get('/delete-data', [RemoveSessionController::class, 'deleteData'])->name('session.delete.data');

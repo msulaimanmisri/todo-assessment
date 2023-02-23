@@ -11,7 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 {{-- Clear session using JS --}}
-<script>
+{{-- <script>
     window.addEventListener('beforeunload', function() {
         // Delete all data
         $.get('{{ route('session.delete.data') }}').done(function(response) {
@@ -27,7 +27,7 @@
             console.log(error);
         });
     });
-</script>
+</script> --}}
 
 
 @stack('child-script')
